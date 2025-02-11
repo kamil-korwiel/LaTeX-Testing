@@ -1,9 +1,40 @@
-\documentclass[12pt]{article}
-\begin{document}
-\begin{tabular}{|p{1.5in}|p{1.5in}|}\hline
-A long-haired domestic cat, with a broad round head. &
-A short-legged, long-bodied, hound-type dog breed.\\\hline
-Persian Cat & Dachsund Dog\\\hline
-\end{tabular}
-\end{document}
+\documentclass{article}
+\usepackage{pdflscape}
+\usepackage{caption} % Für Tabellen- und Abbildungsüberschriften
+\usepackage{array} % Verbesserte Tabellenumgebung
+\usepackage{booktabs} % Für schönere Tabellenlinien
+\usepackage{fancyhdr} % For controlling headers/footers
+\usepackage{lipsum}   % For dummy text
+\usepackage{changepage} % Allows margin changes on a single page
+\usepackage{geometry}
 
+\begin{document}
+
+\lipsum[1] % Some dummy text
+
+\begin{landscape} % pdflscape sorgt für korrekte Rotation im PDF-Viewer
+    \def\maxlenth{0.80in} % Define a variable
+        \begin{table}
+            \centering
+            \newgeometry{margin=0mm} % Remove margins only for this page
+            \thispagestyle{empty} % No headers/footers
+           
+            \caption{Beispiel für eine Tabelle im Querformat} % Tabellenüberschrift
+            \label{tab:example_table} % Label für Referenzierung
+            
+            \begin{tabular}{|p{\maxlenth}|p{\maxlenth}|p{\maxlenth}|p{\maxlenth}|p{\maxlenth}|p{\maxlenth}|p{\maxlenth}|p{\maxlenth}|p{\maxlenth}|}
+                \hline
+                XXX XXXXXXXXX & XXXX XXXXXX XXXXX & XXXXXXXX XXXXX XXXXXXX XXXXX & XXXXXXXX XXXXXXX X XXXXX XXXX & XXXXX XXXXX XXX XXXXXX XXXXXX & Spalte & Spalte & Spalte & Spalte \\ \hline
+                Daten 1  & Daten 2  & Daten 3  & Daten 4  & Spalte & Spalte & Spalte & Spalte & Spalte \\ \hline
+                Daten 5  & Daten 6  & Daten 7  & Daten 8  & Spalte & Spalte & Spalte & Spalte & Spalte \\ \hline
+                Daten 9  & Daten 10 & Daten 11 & Daten 12 & Spalte & Spalte & Spalte & Spalte & Spalte \\ \hline
+            \end{tabular}
+            \vspace{0.5cm} % Abstand zur Quellenangabe
+            \caption*{\textit{Quelle: Eigene Darstellung oder Quelle XYZ.}} % Quellenangabe unter der Tabelle
+        \end{table}
+        \restoregeometry % Restore original margins after this page
+\end{landscape}
+
+\lipsum[2] % More dummy text
+
+\end{document}
